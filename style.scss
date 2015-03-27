@@ -1,0 +1,784 @@
+/*!
+Theme Name: TAU
+Theme URI: TAU.com
+Descritpion: tau theme
+Author: Eric Greenfield
+Template: tau
+Version:
+
+*/
+
+
+
+
+
+/*--  the colors and stuff ----------------------------------*/
+
+$interface-color: #263342;
+$alternate-interface-color: #8d2525;
+$fontcolor: #263342;
+$highlight: #18A4CA;
+$overlay: rgba(0,0,0,.35);
+$box: #263342;
+$boxcolor: white;
+$box-overlay: rgba(38, 51, 66, 0.9);
+
+
+/*--  sass erics framework vars ----------------------------------*/
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic);
+$font: 'PT Sans', sans-serif;
+
+//important font stuff 
+
+$basefont: 16px;
+$baseline: 1.5rem;
+$fontsize: 1rem;
+
+$footersize: 116px; //size of your footer. 
+//footer to be placed right under the div .stickyfooter which contains everything else in the body
+
+
+
+@import 'snp_framework.scss';
+@import 'fonts/style.scss';
+
+ 
+
+//BEGIN YOUR STYLING
+
+
+/*--  common  objects ----------------------------------*/
+
+.box{
+  background: $overlay;
+  h2, h1, p{ color: white; }
+  width: 100%;
+}
+
+
+.radius3{
+  @include border-radius(3px);
+}
+
+
+.stickyfooter{
+  input[type="text"], input[type="password"], textarea{
+  background: transparent;
+  border: 1px solid $highlight;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-left: 3px;
+  outline: none;
+ }
+}
+
+.open-button, .button, .button-alt{
+  @extend %transitions;
+  display: inline-block;
+  @extend .radius3;
+  border: 2px solid $box;
+  padding: 10px 15px;
+  color: $box;
+  font-weight: bold;
+}
+
+.button, .button-alt{
+  &:hover{
+   border: 2px solid $box;
+  }
+}
+
+ .open-button:hover{
+    cursor: pointer;
+    background: $box;
+    color: white;
+  }
+
+.button{
+  background: $highlight;
+ border: 2px solid transparent;
+
+}
+
+.button-alt{
+  background: #fff;
+  border: 2px solid transparent;
+}
+/*--  text---------------------------------*/
+
+p, .p{
+  line-height: 1.5em;
+  color: $fontcolor;
+  margin-bottom: $baseline;
+  font-size: 1rem;
+}
+
+a{
+  color: $highlight;
+  text-decoration: none;
+}
+
+h2, .h2{
+  font-size: $basefont * 2.5;
+  line-height: 1.5em;
+  margin-bottom: 1.5rem;
+  text-transform: capitalize;
+}
+
+
+
+h3, .h3{
+  font-size: 1.8rem;
+  line-height: 1.5em;
+  margin-bottom: 1.5em;
+  text-transform: capitalize;
+}
+
+ p, a, h2, h1{
+    color: inherit;
+  }
+/*--  header ----------------------------------*/
+
+.logged-out header{
+  width: 100%;
+  background: $box-overlay;
+  overflow: hidden;
+  a, p{
+    color: $boxcolor;
+    line-height: 2 * $baseline;
+  }
+   a{
+    color: $highlight;
+   }
+  height: 2* $baseline;
+  
+  .signup{
+    label{display: none;}
+    input[type="submit"]{@extend .button; padding: 0 5px; cursor: pointer;}
+    
+    input{
+    @extend .radius3;
+      color: white;
+  
+  }
+    p, input{
+      float: left;
+    }
+    .login-username, .login-password, .login-submit{padding: 7px;}
+    
+  }
+}
+
+
+.logged-out header{
+  position: fixed;
+  z-index: 3;
+}
+
+.svg-logo a{
+  width: 66px;
+  display: block;
+  span{ text-indent: -9999px; line-height: 0; display: block;};
+  
+  svg{ 
+    position: relative;
+  top: 3px;}
+}
+.logosvg{
+
+  fill: $highlight;
+ 
+}
+
+.post-edit-link{
+  position: absolute;
+  @extend .open-button;
+  margin: 15px;
+}
+
+
+/*--  front page ----------------------------------*/
+
+.front-splash{
+ height: 70vh;
+  overflow: hidden;
+  position: relative;
+  @extend .m1;
+ img{
+    width: 100%;
+  }
+}
+
+
+/*--  app-view ----------------------------------*/
+
+
+//logo svg stuff for tau logo
+.app-view .svg-logo, .app-view .logo{
+  height: 100%;
+  
+  img{ margin-bottom: 0;}
+}
+
+.app-view .svg-logo a, .app-view .svg-logo h1{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.app-view .svg-logo  svg{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+  
+  .logosvg{
+
+  fill: white;
+ 
+  }
+}
+
+.app-view .stickyfooter{
+  padding-top: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
+  background: url('images/background.jpg') no-repeat;
+  background-size: cover;
+ background-attachment: fixed;
+h1{ 
+  font-size: 2 * $fontsize;   
+   text-transform: capitalize;
+  margin-bottom: $baseline;
+ 
+  }
+}
+.app-view-module{
+  background: #f0f4f7;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.app-view-module header{
+  height: 4* $baseline;
+  overflow: hidden;
+  background: white;
+  p.username, div{ line-height: 4 * $baseline; }
+ .progress{ padding-top: 15px; }
+  .logo a{
+    display: block;
+    width: 100%;
+  }
+}
+
+
+.progress-info p{line-height: 1em; font-size: .7rem;}
+
+.progress p, .progress-bar{ margin-bottom: 5px; }
+
+.progress-bar{
+  background-color: #F0F4F7;
+  @include border-radius(3px);
+  @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.14));
+  width: 100%;
+  height: 15px;
+  overflow: hidden;
+  
+  .percentage{
+    height: 15px;
+    width: 50%;
+    background: $highlight; 
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.14));
+  }
+}
+
+
+body .app-menu{
+  height: 100%;
+  margin-bottom: 0;
+  padding-top: 2 * $baseline;
+  li span{ position: relative; top: 3px; margin-right: 5px;}
+  li a{ padding:15px 15px 15px 20px; text-decoration: none; display: block;}
+  li a:hover{ color: $highlight; @extend %transitions;}
+  li a.topic-head{ padding-left: 10px; font-weight: bold; color: white;}
+  li a.topic-head:hover{color: white;}
+  li a.current:before{
+//    background: $highlight;
+//    content: '';
+    width: 10px;
+    height: 100%;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    font-family: 'tau';
+  }
+  li a.finished:before{
+    content: "\2713";
+    color: $highlight;
+    line-height: 1.89rem;
+    width: 20px;
+    text-align: center;
+     
+    height: 100%;
+    position: absolute;
+    display: block;
+    left: 0;
+    top: 0;
+    font-family: 'tau';
+  }
+  
+  li{
+     position: relative;
+    display: block;
+    line-height: 1.5em;
+    
+    ul{background: rgba(0,0,0,.4); }
+    ul li{
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+      border-bottom: 1px solid rgba(255,255,255,.5);
+      a{padding: 5px 0 5px 25px;}
+    }
+  }
+  
+  &:after{
+    content: '';
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: inherit;
+    background: inherit;
+  }
+}
+
+
+
+/*--  overridable colors ----------------------------------*/
+
+
+
+.highlight, .current{ color: $highlight; }
+  .background-highlight{ background: $highlight;
+  }
+  .interface-color{ color: $interface-color; }
+ .background-interface-color{ background: $interface-color; }
+  
+  .text-on-interface-color{ color: white;}
+
+
+/*--  progress bar ----------------------------------*/
+
+.progress-info{
+  font-size: 13px;
+}
+
+
+
+/*--  fancybox thumb ----------------------------------*/
+
+.fancybox-thumb.featured{ margin: auto; position: relative; display: inline-block; text-align: center; margin-bottom: $baseline;
+  img{ margin-bottom:0; }}
+.fancybox-thumb.featured:before{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: white;
+  font-size: 20px;
+  padding: 6px 5px 6px 6px;
+  background: #747474;
+  @extend .icontau;
+  @extend .icontau-expand;
+}
+
+
+.sidebar-images{ padding-left: 30px; }
+
+
+/*--  articles (lessons content) ----------------------------------*/
+
+.app-view .main-area{position: relative; padding-top: $baseline; }
+
+
+
+
+.the-content, .lesson-sidebar aside, .sidebar aside{
+  @extend .m1;
+  .alignleft{ margin-right: 15px; }
+  .alignright{ margin-left: 15px; }
+.aligncenter{ margin: 24px auto;}
+  .alignleft, .alignright{ margin-top: 24px; }
+  
+  background-color: #FFF;
+@include border-radius(3px);
+@include box-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  overflow: hidden;
+  article{
+      padding: 15px;
+  }
+  
+  h2{
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: .8rem;
+  }
+  
+  h3{
+    font-weight: bold;
+    @extend .p;
+     
+    margin-bottom: .8rem;
+  }
+ 
+}
+
+/*--  nav (prev and next) links ----------------------------------*/
+
+.nav-links{
+  @extend .radius3;
+  @extend .cf;
+  height: 2 * $baseline;
+  overflow: hidden;
+  position: relative;
+  
+  a, input[type="submit"]{
+    font-size: 1.2rem;
+    font-weight: bold;
+    line-height: 2 * $baseline;
+    color: white;
+    display: block;
+    font-family: $font;
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: 100%;
+    &:hover{
+      border: none;
+      background: transparent;
+    }
+    
+  }
+   .left-skew{ padding-right: 15px; border-radius: 4px 0 0 4px; }
+  .right-skew{ padding-left: 15px; border-radius: 0 4px 4px 0; }
+//  .nav-link-sep:before{
+//    content: '';
+//    width: 15px;
+//    height: 200px;
+//    background: #f0f4f7;
+//    @include transform(rotate(45deg));
+//    position: absolute;
+//    top: -100px;
+//    
+//  }
+  
+  input[type="submit"]{ text-align: right;}
+  
+}
+  
+ 
+  
+  .skewed{
+    @include transform(skew(-45deg));
+     background: $interface-color;
+    a, .next-lesson_wrapper{  @include transform(skew(45deg)); }
+    padding: 0 15px;
+  }
+  
+  .left-skew .skewed:before{
+    content: '';
+    left:0;
+    width: 100px;
+    height: 100%;
+    background: inherit;
+    position: absolute;
+    @include transform(skew(45deg));
+    display: block;
+  }
+  
+  .right-skew .skewed:before{
+    content: '';
+    right:0;
+    width: 100px;
+    height: 100%;
+    background: inherit;
+    position: absolute;
+    @include transform(skew(45deg));
+    display: block;
+    
+  }
+  
+  .quiz-button{
+  background: $alternate-interface-color;
+  }
+  
+
+
+
+
+
+/*--  lesson-sidebar ----------------------------------*/
+
+.lesson-sidebar aside, .sidebar aside{
+  
+   p{ padding: 15px;}
+
+  h3,h2{
+    background: $interface-color;
+    color: white;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: bold;
+    line-height: 2 * $baseline;
+    margin-bottom: .8rem; 
+  }
+}
+
+
+/*--  inputs ----------------------------------*/
+
+.stickyfooter{
+  input[type="text"], textarea, select{
+  font-family: $font;
+  width: 100%;
+}
+
+input[type="submit"]{
+  cursor: pointer;
+}
+
+}
+
+
+/**
+ *
+ *  front end media adding. fixing some classes for front end 
+ *
+ */
+.screen-reader-text, .screen-reader-text span, .ui-helper-hidden-accessible{
+position: absolute;
+margin: -1px;
+padding: 0;
+height: 1px;
+width: 1px;
+overflow: hidden;
+clip: rect(0 0 0 0);
+border: 0;
+}
+
+
+
+/**
+ *
+ *  Course listing 
+ *
+ */
+
+
+
+.course-list .course, .resource-list{
+ 
+  a{  
+    @extend .the-content; 
+    display: block;  
+    position: relative;
+    overflow: hidden;
+    max-width: 400px;
+    margin: auto;
+    //should always be same hieght if all course thumbnails maintain same size. are same height
+     img{ margin: auto; }
+  h2{
+    text-align: center;
+    color: white;
+    background: $interface-color;
+    position: relative;
+    z-index: 2;
+    line-height: 45px;
+    margin: 0;
+   }
+  }
+}
+
+.course-list a .overlay {
+  overflow: hidden;
+  padding-top: 45px;
+  position: absolute;
+  background: rgba(46, 46, 46, 0.9);
+  width: 100%;
+  height: 100%;
+  
+  img{ margin-bottom: 15px; }
+  .description{ 
+    position: relative;
+    padding: 0 15px;
+    color: white;
+    &:before{
+      content: '';
+      width: 100%;
+      height: 1px;
+      display: block;
+      margin: auto;
+      background: rgba(198, 198, 198, 0.7);
+      margin-bottom: 15px;
+      
+      
+    }
+}
+  }
+  
+
+/**
+ *
+ *  resources 
+ *
+ */
+
+ .bottom-content{
+    max-height: 0;
+    @extend %transitions;
+   padding: 0 15px;
+   overflow: hidden;
+  }
+
+.resource-list article{
+  padding: 0;
+  h2{ background: $highlight; color: white; margin-bottom: 0;}
+  label{ display: block; cursor: pointer; padding: 15px;}
+ 
+  input:checked + .bottom-content{
+    max-height: none;  //1000px;
+    padding: 15px;
+  }
+  
+  
+}
+
+
+/**
+ *
+ *  global form settings
+ * 
+ *
+ */
+
+.hidden, .gform_validation_container{ display: none; }
+
+.ui-datepicker-trigger{ 
+  display: inline;
+  margin: 0 0 0 5px;
+}
+
+input, textarea{
+  border-radius: 3px;
+}
+
+body .stickyfooter .datepicker{
+ // width: 90%;
+}
+
+.wp-editor-container{
+  border: 1px solid $highlight;
+}
+
+.stickyfooter textarea.frontend{
+  border: none;
+}
+
+
+/**
+ *
+ *  basic form settings. used on adding a resource, 
+ *
+ */
+
+.basic-form,  article .basic-form{
+  padding-top: 30px;
+  margin-bottom: $baseline;
+  .gform_footer{ padding: 0 15px; }
+  label{ display: none;}
+  input, textarea{ 
+    padding: 3px;
+    &:focus{ border: 1px solid $interface-color;}
+  }
+  
+  input[type="submit"].button{
+    border: 1px solid transparent;
+    color: white;
+    float: right;
+    
+    margin-bottom: $baseline;
+  }
+  
+}
+
+/**
+ *
+ *  media queries 
+ *
+ */
+
+@media only screen 
+and (max-width : 1208px) {
+/* Styles */
+  
+  .main-area .course{ width: 50%; }
+  
+  
+}
+
+
+
+
+@media only screen 
+and (max-width : 770px) {
+/* Styles */
+  
+  .main-area .course{ width: 100%; }
+  
+  
+}
+
+
+
+@media only screen 
+and (min-width : 1208px) {
+
+.app-menu{ font-size: 1.25rem;}
+
+}
+
+
+
+/**
+ *
+ *  menu 
+ *
+ */
+
+
+
+@media only screen 
+and (max-width : 650px) {
+/* Styles */
+  
+  .app-view .stickyfooter{
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  
+  body .app-menu li{
+    visibility: hidden;
+  }
+  
+  body .app-menu li span{
+    visibility: visible;
+    font-size: 1.25rem;
+    text-align: center;
+    display: block;
+  }
+  
+  
+}

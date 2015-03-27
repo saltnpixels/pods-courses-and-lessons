@@ -1,0 +1,308 @@
+@import 'compass/css3';
+/*-- notes on v4 ----------------------------------
+
+Super easy.
+make sure columns are always inside wrap and make sure any full body areas are outside wrap.
+so .full-area>.wrap>.col-3-4+.col-1-4  is correct.
+never do a different order...
+
+you can give .wrap padding so there is even more padding on mbile devices and it looks better
+
+*/
+
+
+/*--  used myers reset ----------------------------------*/
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+display: block; }
+
+
+ol, ul {
+list-style: none; }
+
+blockquote, q {
+quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none; }
+
+table {
+border-collapse: collapse;
+border-spacing: 0; }
+
+/*--  end reset ----------------------------------*/
+
+
+
+/* Erics grid setup*/
+
+//push paddings inside. that way cols have fixed gutters. super easy!
+*{
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+
+}
+
+//i found im always making my images blocks. also adds responsive
+img{
+display:block;
+  max-width: 100%;
+  margin: auto;
+  height: auto;
+  @extend .m1;
+}
+
+/* clearfix  For modern browsers */
+.cf:before,
+.cf:after, [class^='col-']:before, [class^='col-']:after, .module:after, .module:before{
+content:"";
+display:table;
+}
+
+.cf:after, [class^='col-']:after, .module:after {
+clear:both;
+}
+
+/* For IE 6/7 (trigger hasLayout) */
+.cf, [class^='col-'], .module {
+*zoom:1;
+}
+
+.clearfix{
+  @extend .cf;
+}
+
+ /* grid is responsive and can stretch as big as you want or cap it with wrap.
+wrap here is actually 1170. 1230 is defualt
+    i make sure to put columns on the inside with padding of 15 on each side. And it inside another */
+.wrap{
+width:100%;
+max-width:1300px;  
+margin:auto;
+clear:both;
+}
+
+
+/*my grid magic!!*/
+
+//use these classes.
+
+[class*="col-"] {
+  float: left;
+    @extend %gutters;
+  @extend .m1;
+  @extend .cf;
+}
+
+%gutters, .gutters, .module{ padding: 0 15px; }
+.double-gutters{
+  padding: 0 30px;
+}
+
+.full-double-gutters{ padding: 30px; }
+.full-gutters, .fullgutters{ padding: 15px; }
+
+body .hasinnercols, body .nogutters{ padding: 0; }
+.m1{ margin-bottom: 24px; margin-bottom: $baseline; }
+.clear{ clear: both; }
+.right, .alignright{ float: right; }
+.center{ margin: auto; }
+.center-text{ text-align: center; }
+
+.text-right{ text-align: right; }
+.text-left{ text-align: left; }
+
+
+
+.col-1-2 { width: 50%; }
+.col-30{ width: 30%; }
+.col-1-3 { width: 33.3333%; }
+.col-2-3 { width: 66.6666%; }
+.col-1-4 { width: 25%; }
+.col-3-4 { width: 75%; }
+.col-1-5 { width: 20%; }
+.col-2-5 { width: 40%; }
+.col-3-5 { width: 60%; }
+.col-4-5 { width: 80%; }
+.col-1-6 { width: 16.6666%; }
+.col-5-6 { width: 83.3333%; }
+.col-full{ width: 100%;  float: none; clear: both;}
+
+.col-full>.col-full{
+  padding: 0; 
+}
+.left, .alignleft{ float: left; }
+
+
+body .no-baseline, body .m0{ margin-bottom: 0; }
+
+.baseline, .m1, %m1{
+  margin-bottom: $baseline;
+}
+
+.double-baseline, .m2, %m2{
+  margin-bottom: 2*$baseline;
+}
+
+.triple-baseline, .m3, %m3{
+  margin-bottom: 1.5*$baseline;
+}
+
+/*--  end grid work ----------------------------------*/
+
+
+
+
+
+/*--  scrollbar stuff ----------------------------------*/
+
+//stop scroll bars from appearing in any div on stupid windows
+body *{
+ -ms-overflow-style: none;
+  
+  
+}
+
+body *::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+/*--  sass functions and useful extensions ----------------------------------*/
+
+
+%transitions{
+    @include transition(all, .5s);
+}
+
+
+@mixin image-2x($image, $width, $height) {
+  @media (min--moz-device-pixel-ratio: 1.3),
+         (-o-min-device-pixel-ratio: 2.6/2),
+         (-webkit-min-device-pixel-ratio: 1.3),
+         (min-device-pixel-ratio: 1.3),
+         (min-resolution: 1.3dppx) {
+    /* on retina, use image that's scaled by 2 */
+    background-image: url($image);
+    background-size: $width $height;
+  }
+}
+
+//use with @include image-2x("image2x.png", 100px, 100px);
+//height and width should match original images height and width
+
+
+
+@mixin triangle($size, $color, $direction: 'up') {
+	width: 0;
+	height: 0;
+
+	@if $direction == 'up' { 
+		border-right: $size solid transparent;
+		border-bottom: $size * 1.732 solid $color; 
+		border-left: $size solid transparent; 
+	} @else if $direction == 'down' {
+		border-top: $size * 1.732 solid $color; 
+		border-right: $size solid transparent; 
+		border-left: $size solid transparent; 
+	} @else if $direction == 'left' {
+		border-top: $size solid transparent; 
+		border-right: $size * 1.732 solid $color; 
+		border-bottom: $size solid transparent; 
+	} @else if $direction == 'right' {
+		border-top: $size solid transparent; 
+		border-bottom: $size solid transparent; 
+		border-left: $size * 1.732 solid $color; 
+	}
+}
+
+
+
+
+
+/*--  body setup ----------------------------------*/
+body{
+ height: 100%;
+  margin: 0;
+ 
+}
+
+
+body, html, .stickyfooter input {
+   -webkit-text-size-adjust: 100%;
+  height: 100%;
+ //  overflow: auto;
+  line-height: 1.5em; //$baseline; //1.5rem of fontsize
+  font-family: $font;
+  font-size: $basefont; //sets main font size to 16px unless you change it
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+     font-smoothing: antialiased;
+}
+
+
+strong{
+ font-weight: bold; 
+}
+
+em{
+ font-style: italic; 
+}
+
+/* ~contains everything from under body till footer and footer gets negative margin-top equal to this padding bottom.
+one day change to vh and use calc to minus off the header and footer.
+------------------------------------------------------*/
+.stickyfooter{ 
+min-height: 100%;
+position: relative;
+padding-bottom: $footersize;
+  @extend .cf;
+  overflow-x: hidden;
+  
+}
+
+footer{
+  margin-top: -1 * $footersize;
+  min-height: $footersize;
+  clear: both;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+/*--  mobile slide menu ----------------------------------*/
+
+/*--  end of shamais fraemwork v4 ----------------------------------*/

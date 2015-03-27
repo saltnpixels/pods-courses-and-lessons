@@ -1,0 +1,78 @@
+@import 'compass/css3';
+
+
+
+
+
+
+
+$basefont: 16px;
+$baseline: 1.5rem;
+$fontsize: 1rem;
+$footersize: 116px; //size of your footer. 
+
+
+
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic);
+$font: 'PT Sans', sans-serif;
+
+
+.radius3{
+  @include border-radius(3px);
+}
+
+
+p, .p{
+  line-height: 1.5em;
+  margin-bottom: $baseline;
+  font-size: 16px;
+}
+
+
+
+
+
+ p, a, h2, h1{
+    color: inherit;
+  }
+
+
+img{
+  max-width: 100%;
+  margin-bottom: 24px;
+}
+
+
+#tinymce{
+  max-width: 600px;
+border: 1px solid rgba(0,0,0,.5);
+  padding: 15px !important;
+  margin: auto;
+}
+
+#tinymce.pods-form-ui-pods-meta-lesson-sidebar{
+  max-width: 300px;
+  
+}
+
+
+body, a, p, h2, h3{
+  font-family: $font;
+}
+
+ .alignleft{ margin-right: 15px; }
+  .alignright{ margin-left: 15px; }
+.aligncenter{ margin: 24px auto;}
+
+h2{
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: .8rem;
+  }
+  
+  h3{
+    font-weight: bold;
+    @extend .p;
+     
+    margin-bottom: .8rem;
+  }
