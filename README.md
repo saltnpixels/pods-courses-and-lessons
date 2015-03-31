@@ -11,9 +11,13 @@ Do the same for the gravity form import file.
 
 Create Courses and Lessons
 
+Courses can be styled completely using custom fields
+
 Reorder lessons inside the course easily, by dragging the tags of lessons around.
 
-Tracking Pod. Tracks users status. currently tracks which lessons user has taken.
+Tracking Pod. Tracks users status. 
+
+Currently tracks which lessons user has taken.
 User submits "next lesson" form and it adds/updates tracking pod for this user.
 Status bar gets updated based on that.
 
